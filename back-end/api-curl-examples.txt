@@ -1,0 +1,155 @@
+# CURL EXAMPLES FOR POSTMAN TESTING
+
+# 1. Thêm loại sản phẩm
+curl -X POST http://localhost:8080/loaisanpham \
+  -H "Content-Type: application/json" \
+  -d '{"tenLoaiSanPham": "Điện thoại"}'
+
+# 2. Sửa loại sản phẩm
+curl -X PUT http://localhost:8080/loaisanpham/1 \
+  -H "Content-Type: application/json" \
+  -d '{"tenLoaiSanPham": "Laptop"}'
+
+# 3. Xóa loại sản phẩm
+curl -X DELETE http://localhost:8080/loaisanpham/1
+
+# 4. Lấy tất cả loại sản phẩm
+curl http://localhost:8080/loaisanpham
+
+# 5. Thêm sản phẩm
+curl -X POST http://localhost:8080/api/sanpham \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tenSanPham": "iPhone 15",
+    "giaSanPham": 25000000,
+    "soLuongSanPham": 10,
+    "moTa": "Điện thoại cao cấp",
+    "hinhAnh": "iphone15.jpg",
+    "isActive": true,
+    "maLoaiSanPham": 1
+}'
+
+# 6. Sửa sản phẩm
+curl -X PUT http://localhost:8080/api/sanpham/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tenSanPham": "iPhone 15 Pro",
+    "giaSanPham": 30000000,
+    "soLuongSanPham": 5,
+    "moTa": "Bản Pro",
+    "hinhAnh": "iphone15pro.jpg",
+    "isActive": true,
+    "maLoaiSanPham": 1
+}'
+
+# 7. Xóa sản phẩm
+curl -X DELETE http://localhost:8080/api/sanpham/1
+
+# 8. Lấy tất cả sản phẩm
+curl http://localhost:8080/api/sanpham
+
+# 9. Lấy sản phẩm theo id
+curl http://localhost:8080/api/sanpham/1
+
+# 10. Thêm khách hàng
+curl -X POST http://localhost:8080/khachhang \
+  -H "Content-Type: application/json" \
+  -d '{
+    "hoTen": "Nguyen Van A",
+    "email": "vana@example.com",
+    "soDienThoai": "0912345678",
+    "diaChi": "Hà Nội"
+}'
+
+# 11. Sửa khách hàng
+curl -X PUT http://localhost:8080/khachhang/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "hoTen": "Nguyen Van B",
+    "email": "vanb@example.com",
+    "soDienThoai": "0987654321",
+    "diaChi": "Hồ Chí Minh"
+}'
+
+# 12. Xóa khách hàng
+curl -X DELETE http://localhost:8080/khachhang/1
+
+# 13. Lấy tất cả khách hàng
+curl http://localhost:8080/khachhang
+
+# 14. Lấy khách hàng theo id
+curl http://localhost:8080/khachhang/1
+
+# 15. Tìm khách hàng theo email
+curl http://localhost:8080/khachhang/search/email?email=vana@example.com
+
+# 16. Thêm đơn hàng
+curl -X POST http://localhost:8080/api/donhang \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ngayDat": "2025-05-09",
+    "tongTien": 25000000,
+    "trangThai": "Đã đặt",
+    "maKhachHang": 1,
+    "chiTietDonHangs": [
+      {
+        "soLuong": 1,
+        "gia": 25000000,
+        "maSanPham": 1,
+        "maDonHang": 1
+      }
+    ]
+}'
+
+# 17. Sửa đơn hàng
+curl -X PUT http://localhost:8080/api/donhang/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ngayDat": "2025-05-10",
+    "tongTien": 30000000,
+    "trangThai": "Đã giao",
+    "maKhachHang": 1,
+    "chiTietDonHangs": [
+      {
+        "soLuong": 2,
+        "gia": 30000000,
+        "maSanPham": 1,
+        "maDonHang": 1
+      }
+    ]
+}'
+
+# 18. Xóa đơn hàng
+curl -X DELETE http://localhost:8080/api/donhang/1
+
+# 19. Lấy tất cả đơn hàng
+curl http://localhost:8080/api/donhang
+
+# 20. Lấy đơn hàng theo id
+curl http://localhost:8080/api/donhang/1
+
+# 21. Thêm chi tiết đơn hàng
+curl -X POST http://localhost:8080/chi-tiet-don-hang \
+  -H "Content-Type: application/json" \
+  -d '{
+    "soLuong": 1,
+    "gia": 25000000,
+    "maSanPham": 1,
+    "maDonHang": 1
+}'
+
+# 22. Sửa chi tiết đơn hàng
+curl -X PUT http://localhost:8080/chi-tiet-don-hang/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "soLuong": 2,
+    "gia": 50000000,
+    "maSanPham": 1,
+    "maDonHang": 1
+}'
+
+# 23. Xóa chi tiết đơn hàng
+curl -X DELETE http://localhost:8080/chi-tiet-don-hang/1
+
+# 24. Lấy tất cả chi tiết đơn hàng
+curl http://localhost:8080/chi-tiet-don-hang
